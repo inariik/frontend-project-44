@@ -8,26 +8,26 @@ const greeting = () => {
   return userName;
 };
 
-const randomProgression = (length) => {
+const getRandomProgression = (length) => {
   const num = Math.round(Math.random() * length);
   const randomIndex = Math.round(Math.random() * length);
   const progression = [];
   for (let i = 0; i < length; i += 1) {
     progression.push(num * i);
   }
-  const hiddenNumber = progression.at(randomIndex);
+  const hiddenNumber = progression[randomIndex];
   progression[randomIndex] = '..';
   return { progression, hiddenNumber };
 };
 
-const gettingRandomOperator = () => {
+const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
   const randomOperator = Math.floor(Math.random() * operators.length);
   const operator = operators[randomOperator];
   return operator;
 };
 
-const genGcd = (num1, num2) => {
+const findGCD = (num1, num2) => {
   const smaller = Math.min(num1, num2);
   let divisor = smaller;
   for (divisor; divisor > 0; divisor -= 1) {
@@ -58,7 +58,7 @@ const calcAnswer = (operator, num1, num2) => {
 
 const progression = () => {
   const progressionLength = 10;
-  const assignment = randomProgression(progressionLength);
+  const assignment = getRandomProgression(progressionLength);
   const task = assignment.progression.join(' ');
   const rightAnswer = `${assignment.hiddenNumber}`;
   return { task, rightAnswer };
@@ -69,7 +69,7 @@ const GCD = () => {
   const num1 = getRandomInt(maxNumber);
   const num2 = getRandomInt(maxNumber);
   const task = `${num1} ${num2}`;
-  const rightAnswer = `${genGcd(num1, num2)}`;
+  const rightAnswer = `${findGCD(num1, num2)}`;
   return { task, rightAnswer };
 };
 
@@ -84,7 +84,7 @@ const evenOdd = () => {
 
 const calc = () => {
   const maxNumber = 10;
-  const operator = gettingRandomOperator();
+  const operator = getRandomOperator();
   const num1 = getRandomInt(maxNumber);
   const num2 = getRandomInt(maxNumber);
   const task = `${num1} ${operator} ${num2}`;
