@@ -20,7 +20,6 @@ const getRandomProgression = (length) => {
   return { progression, hiddenNumber };
 };
 
-
 const getRandomOperator = () => {
   const operators = ['+', '-', '*'];
   const randomOperator = Math.floor(Math.random() * operators.length);
